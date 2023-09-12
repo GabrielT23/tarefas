@@ -4,7 +4,7 @@ import { ZodError } from 'zod';
 
 export function errorInterceptor(error: Error, request: Request, response: Response, next: NextFunction){
     if(error instanceof ZodError){
-        return response.status(500).json({
+        return response.status(400).json({
             status: 'Error',
             message: 'Validation error',
             issues: error.issues
